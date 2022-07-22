@@ -1,0 +1,12 @@
+public class TestBox {
+	
+	public static void main(String[] args) {
+		Box box1 = new Box();
+		box1.setDimension(3, 4, 5);
+		box1.getVolume();
+		//System.out.println(box1);
+		System.out.println(box1.getVolume());
+
+	}
+
+}

@@ -1,0 +1,16 @@
+
+public class Book {
+	public String name;
+	public double price;
+	public int year;
+	public String author;
+	
+	public static void main(String[] args) {
+		Book book1 = new Book();
+		book1.name = "Harry Potter and The Chamber of Secret";
+		book1.price = 0;
+		book1.year = 2542;
+		book1.author = "J.K. Rowling";
+		System.out.println("Book: "+book1.name+" Written by "+book1.author+" in "+book1.year);
+	}
+}
