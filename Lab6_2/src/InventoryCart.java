@@ -1,4 +1,3 @@
-
 public class InventoryCart {
 	
 	private Product[] productArr;
@@ -10,13 +9,12 @@ public class InventoryCart {
 	public InventoryCart(int a){
 		productArr = new Product[a];
 	}
-	//�͡���Ъ��
+
 	public Product getProduct(int index) {
 		return productArr[index];
 	}
-	//�͡������
+
 	public Product[] getAllProduct() {
 		return productArr;
 	}
-
 }

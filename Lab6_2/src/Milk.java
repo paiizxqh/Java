@@ -1,7 +1,13 @@
 
-public class Milk extends Product{
+public class Milk extends Product {
+	
 
-  public void setVolumn(int i) {
-  }
+	public Milk(int i) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void setVolumn(int volumn) {
+		this.volumn = volumn;
+	}
 
 }
