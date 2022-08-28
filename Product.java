@@ -1,35 +1,31 @@
+package Lab7_2;
 
 public class Product {
+	protected int price;
+	protected int weight;
+	protected int Quantt=1;
 	
-	private String code;
-	private String name;
-	private int price;
-	
-	public Product(String code, String name, int price){
-		this.code = code;
-		this.name = name;
+	public Product(int price) {
 		this.price = price;
 	}
-	
-	//Getter
-	public String getCode(){
-		return code;
-	}
-	public String getName(){
-		return name;
-	}
+
+	//Getter & Setter
 	public int getPrice(){
 		return price;
-	}
-	
-	//Setter
-	public void setCode(String code){
-		this.code = code;
-	}
-	public void setName(String name){
-		this.name = name;
 	}
 	public void setPrice(int price){
 		this.price = price;
 	}
+	public int getWeight(){
+		return weight;
+	}
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+	public int getQuantt() {
+		return Quantt;
+	}
+	public void addQuantt() {
+		this.Quantt = this.Quantt + 1;
+	} 
 }

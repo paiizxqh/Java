@@ -1,28 +1,44 @@
+package Lab7_2;
 
 public class Cashier {
+	private String nameCashier;
+	private InventoryCart ic;
+	private DebitCard debitCard;
 	
-	private String name;
-	
-	public Cashier(String name) {
-		this.name = name;
+	public Cashier(){
+		this.nameCashier = "";
 	}
-
-	public void printReceipt(InventoryCart ic){ 
-		int length = ic.getAllProduct().length;
-		int i,total = 0;
-		System.out.println("Pumpkin Shop "+name);
-		System.out.print("\n");
+	public Cashier (String nameCashier) {
+		this.nameCashier = nameCashier;
+	}
+	private Product inCart(int i) {
+		return this.ic.getProduct(i);
+	}
+	public void doPayment(InventoryCart ic, DebitCard debitCard){
+		this.ic = ic;
+		this.debitCard = debitCard;
+	}
+	public double Discount(int disct) {
+		return disct - disct * (debitCard.discount()/100.00);
+	}
+	public String ssCard() {
+		String[] disct;
+		disct = debitCard.getCardNumber().split("-");
+		return "xxx-xxx-"+disct[2];
+	}
+	public void printReceipt() {
+		int x=0;
+		System.out.println("\t CARD TYPE:"+debitCard.type());
+		System.out.println("\tCARD NUMBER:"+ssCard());
+		System.out.println("\n\t Pumpkin Shop\n");
 		
-		for(i=0;i<length;i++){
-			if(ic.getProduct(i)!=null){
-				System.out.print("1 x "+ic.getProduct(i).getName());
-				System.out.print("\t("+ic.getProduct(i).getCode()+")\t");
-				System.out.print(ic.getProduct(i).getPrice());
-				System.out.print("\n");
-				total = ic.getProduct(i).getPrice() + total;
-			}
+		for(int i=0;i<ic.getIndex();i++) {
+			System.out.println("\t"+inCart(i).getQuantt()+" x "+inCart(i)+" \t"+inCart(i).getPrice()*inCart(i).getQuantt());
+			x = x + inCart(i).getPrice()*inCart(i).getQuantt();
 		}
-		System.out.println("\t---------------");
-		System.out.println("\t\tTotal\t"+total);
+		System.out.println("\t--------------------");
+		System.out.println("\n\tCARD DISCOUNT\t"+debitCard.discount()+" %");
+		
+		System.out.println("\n\tTotal"+"\t\t" + Discount(x) +" \n");
 	}
 }
