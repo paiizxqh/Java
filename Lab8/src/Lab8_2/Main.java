@@ -3,9 +3,9 @@ import java.util.Iterator;
 
 public class Main {
 	
-
 	public static void main(String[] args) {
-		Containers containers = new Containers(){
+
+		for (Iterator iter = new Containers(){
 			String[] names = { "John", "May", "Ryan" };
 
 			public Iterator getIterator() {
@@ -27,9 +27,7 @@ public class Main {
 					}
 				};
 			}
-		};
-	
-		for (Iterator iter = containers.getIterator(); iter.hasNext();){
+		}.getIterator(); iter.hasNext();){
 			String name = (String) iter.next();
 			System.out.println("Name : " + name);
 		}
