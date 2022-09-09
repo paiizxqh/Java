@@ -9,5 +9,4 @@ public class Main {
 		 new Student("Ted","JAB").show(); 
 		 new Student("Tony","CAB").show(); 
 		} 
-
 }

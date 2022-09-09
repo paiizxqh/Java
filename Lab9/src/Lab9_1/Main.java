@@ -16,7 +16,7 @@ public class Main {
 			System.out.println(i);
 		}
 		}catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("Array Index");
+			System.out.println("Out of Array Index");
 		}
 	}
 }

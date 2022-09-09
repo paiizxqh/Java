@@ -1,44 +1,100 @@
 package Lab9_2;
 
-import java.lang.annotation.IncompleteAnnotationException;
-import java.security.DigestInputStream;
-
 public class Student {
-	public String name;
-	public String grade;
+	private String name;
+	private String grade;
+	private double GPA = 0;
+
 	public Student(String name, String grade) {
 		this.name = name;
 		this.grade = grade;
 	}
-	
-	public void greet(String name){
-		if(Character.isDigit(name.charAt(i))){
-			System.out.println("DigitException :(digit is not allowed in name) can not display");
+
+	public void show() {
+		try {
+			greet();
+			System.out.println(name + " registered " + grade.length()
+					+ " subjects and got GPA " + GPA);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
-  public void show() throws IncompleteException,DigitException,SpaceException,GradeException{
+	public void greet() throws Exception {
+		int lengthName = name.length();
+		int lengthGrade = grade.length();
+		for (int i = 0; i < lengthName; i++) {
+			// ตรวจสอบชื่อว่ามีตัวเลขหรือไม่
+			if (name.charAt(i) >= '0' && name.charAt(i) <= '9') {
+				throw new DigitException(
+						"DigitException :(digit is not allowed in name) can not display.");
+			}
+			// ตรวจสอบชื่อว่ามีช่องว่างหรือไม่
+			if (name.charAt(i) == ' ') {
+				throw new SpaceException(
+						"SpaceException :(space is not allowed in name) can not display.");
+			}
+		}
+		for (int i = 0; i < lengthGrade; i++) {
+			// ตรวจสอบเกรดว่าถูกต้องหรือไม่
+			if (grade.charAt(i) != 'A' && grade.charAt(i) != 'B'
+					&& grade.charAt(i) != 'C' && grade.charAt(i) != 'D'
+					&& grade.charAt(i) != 'E' && grade.charAt(i) != 'F'
+					&& grade.charAt(i) != 'I') {
+				throw new GradeException(
+						"GradeException :(grade must be A B C D E F) can not display.");
+			}
+			// ตรวจสอบเกรดที่เป็น I
+			if (grade.charAt(i) == 'I') {
+				throw new IncompleteException(
+						"IncompleteException :(grade I is incomplete) can not display.");
+			}
+			switch (grade.charAt(i)) {
+			case 'A':
+				GPA += 4;
+				break;
+			case 'B':
+				GPA += 3;
+				break;
+			case 'C':
+				GPA += 2;
+				break;
+			case 'D':
+				GPA += 1;
+				break;
+			/*
+			 * case 'E': GPA =+ 0.5; break;
+			 */
+			case 'F':
+				GPA += 0;
+				break;
+			}
+		}
+		GPA = GPA / grade.length();
+	}
 
-  }
-	//getter & setter
-	public String getName(){
+	// getter & setter
+	public String getName() {
 		return name;
 	}
-	public void setName(String name){
+
+	public void setName(String name) {
 		this.name = name;
 	}
-	public String getGrade(){
+
+	public String getGrade() {
 		return grade;
 	}
-	public void setGrade(String grade){
+
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 
-	/*
-				* IncompleteException :(grade I is incomplete) can not display. 
-			DigitException :(digit is not allowed in name) can not display. 
-			SpaceException :(space is not allowed in name) can not display. 
-			GradeException :(grade must be A B C D E F) can not display. 
-			Tony registered 3 subjects and got GPA 3.0
-	 */
+	public double getGPA() {
+		return GPA;
+	}
+
+	public void setGPA(double GPA) {
+		this.GPA = GPA;
+	}
 }
